@@ -50,8 +50,11 @@ class movie {
     internal func getURL(isHigh:Bool)->NSURL{
         guard isHigh else {
             let imageBaseUrlLow: String  = "https://image.tmdb.org/t/p/w342"
+            if(self.background != nil){
             let retURL = NSURL(string: imageBaseUrlLow + self.background!)
-            return retURL!
+                return retURL!
+            }
+            return NSURL(string: "")!;
         }
         let imageBaseUrlHigh: String = "https://image.tmdb.org/t/p/original"
         let retURL = NSURL(string: imageBaseUrlHigh + self.background!)

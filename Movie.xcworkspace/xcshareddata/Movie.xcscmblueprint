@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "FF7C442585689AF554F87AFF12B091E3CBBDC23A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FF7C442585689AF554F87AFF12B091E3CBBDC23A" : 0,
+    "DA3A486FE56682B1A5538BF751EFBF512D4CF52C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B03F942E-BB06-4CE1-B59A-F1684DECAA11",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "FF7C442585689AF554F87AFF12B091E3CBBDC23A" : "Movie\/",
+    "DA3A486FE56682B1A5538BF751EFBF512D4CF52C" : "..\/ARSLineProgress"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Movie",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Movie.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:soberman\/ARSLineProgress.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DA3A486FE56682B1A5538BF751EFBF512D4CF52C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:JohnWhisker\/-IOS-Movie_Viewer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FF7C442585689AF554F87AFF12B091E3CBBDC23A"
+    }
+  ]
+}

@@ -6,6 +6,8 @@ target 'Movie' do
   use_frameworks!
   pod 'Alamofire', '~> 3.4'
   pod 'AlamofireImage', '~>2.0'
+  pod 'ARSLineProgress', '~> 1.0'
+  pod 'SVPullToRefresh'
   # Pods for Movie
 
 end

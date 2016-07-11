@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ARSLineProgress
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,7 +15,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // Now Playing Tab
+        let nowPlayingNavigationController = storyboard.instantiateViewControllerWithIdentifier("MovieNavigationController") as! UINavigationController
+        let nowPlayingViewController = nowPlayingNavigationController.topViewController as! MovieViewController
+        nowPlayingViewController.endpoint = "now_playing"
+        nowPlayingViewController.title = "Now Playing"
+        nowPlayingViewController.tabBarItem.title = "Now Playing"
+        nowPlayingViewController.tabBarItem.image = UIImage(named: "nowPlaying")
+        
+        // Top Rated Tab
+        let topRateNavigationController = storyboard.instantiateViewControllerWithIdentifier("MovieNavigationController") as! UINavigationController
+        let topRateViewController = topRateNavigationController.topViewController as! MovieViewController
+        topRateViewController.endpoint = "top_rated"
+        topRateViewController.title = "Top Rated"
+        topRateViewController.tabBarItem.title = "Top Rated"
+        topRateViewController.tabBarItem.image = UIImage(named: "top")
+        
+        // Search Bar
+        let searchNavigationController = storyboard.instantiateViewControllerWithIdentifier("SearchNavigationController") as! UINavigationController
+        let searchViewController = searchNavigationController.topViewController as! SearchViewController
+       // topRateViewController.endpoint = "top_rated"
+       // searchViewController.title = "Search"
+        //searchViewController.tabBarItem.title = "Search"
+        searchNavigationController.tabBarItem.title = "Seach"
+        searchNavigationController.setToolbarHidden(true, animated: false)
+        
+        //topRateViewController.tabBarItem.image = UIImage(named: "top")
+
+        
+        // Init Tab Bar
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [nowPlayingNavigationController,topRateNavigationController,searchNavigationController]
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
+        
         return true
     }
 

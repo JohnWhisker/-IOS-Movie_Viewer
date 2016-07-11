@@ -11,13 +11,13 @@ import Alamofire
 import AlamofireImage
 
 class MovieViewController: UIViewController {
-
+    var endpoint: String?
     @IBOutlet weak var tableView: UITableView!
     var Movies: [movie] = []
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        ARSLineProgress.show()
         loadData()
-      
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -27,9 +27,7 @@ class MovieViewController: UIViewController {
     }
     
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPathForCell(cell)
         let movie = Movies[indexPath!.row]        
@@ -37,8 +35,6 @@ class MovieViewController: UIViewController {
         detailViewController.currentmovie = movie
     }
     
-
-   
 }
 
 // MARK: - DataSource for TableView
@@ -49,14 +45,14 @@ extension MovieViewController: UITableViewDataSource {
         guard (self.Movies.count > 0) else { return 0 }
         return self.Movies.count
     }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell",forIndexPath: indexPath) as! MovieCell
-        
         cell.titleLable.text = self.Movies[indexPath.row].title! as String
-       // cell.overviewLable.text = self.Movies[indexPath.row].overview! as String
+      //cell.overviewLable.text = self.Movies[indexPath.row].overview! as String
+        if(self.Movies[indexPath.row].background != nil){
         cell.posterView.image = UIImage(data: NSData(contentsOfURL: self.Movies[indexPath.row].getURL(false))!)
-        //cell.posterView = UIImage(data: NSData(contentsOfURL: self.Movies[indexPath.row].posterUrlLow)! as String)
+      //cell.posterView = UIImage(data: NSData(contentsOfURL: self.Movies[indexPath.row].posterUrlLow)! as String)
+        }
         return cell;
     }
 
@@ -65,23 +61,21 @@ extension MovieViewController: UITableViewDataSource {
 // MARK: - Delegate TableView
 
 extension MovieViewController: UITableViewDelegate {
-
+    // nothing in here. Thanks for your wasted time. LOL =)))
 }
 
 //MARK: - Implement LoadDatafunction
 
 extension MovieViewController {
     func loadData(){
-        //https://api.themoviedb.org/3/movie/now_playing?api_key=
-        Alamofire.request(.GET, "https://api.themoviedb.org/3/movie/now_playing", parameters: ["api_key": "a07e22bc18f5cb106bfe4cc1f83ad8ed"])
+        Alamofire.request(.GET, "https://api.themoviedb.org/3/movie/\(endpoint! as String)", parameters: ["api_key": "a07e22bc18f5cb106bfe4cc1f83ad8ed","page":"1"])
             .responseJSON { response in
                 if let JSON = response.result.value {
-                    if let results = JSON["results"] as! [NSDictionary]?{
+                    if let results = JSON["results"] as! [NSDictionary]? {
                         for result in results {
                             let thisMovie : movie = movie()
                             thisMovie.initData(result)
-                          //  thisMovie.printOut()
-                            
+                          //thisMovie.printOut()
                             self.Movies.append(thisMovie)
                             self.tableView.reloadData()
                         }

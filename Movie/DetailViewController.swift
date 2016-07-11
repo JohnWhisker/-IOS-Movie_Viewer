@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ARSLineProgress
 
 class DetailViewController: UIViewController {
 
@@ -16,26 +17,25 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var viewLayout: UIView!
     internal var currentmovie: movie = movie()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: viewLayout.frame.origin.y + viewLayout.frame.size.height + 15)
+        currentmovie.printOut()
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: viewLayout.frame.origin.y + viewLayout.frame.size.height + 55)
         viewLayout.layer.cornerRadius = 5
         backgroundView.af_setImageWithURL(self.currentmovie.getURL(true))
         titleLable.text = currentmovie.title
         overviewLable.text = currentmovie.overview
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
