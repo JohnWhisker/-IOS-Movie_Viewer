@@ -20,10 +20,12 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ARSLineProgress.showOnView(view)
         currentmovie.printOut()
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: viewLayout.frame.origin.y + viewLayout.frame.size.height + 55)
         viewLayout.layer.cornerRadius = 5
         backgroundView.af_setImageWithURL(self.currentmovie.getURL(true))
+        
         titleLable.text = currentmovie.title
         overviewLable.text = currentmovie.overview
         // Do any additional setup after loading the view.
