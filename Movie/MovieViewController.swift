@@ -15,14 +15,25 @@ class MovieViewController: UIViewController {
     var endpoint: String?
     @IBOutlet weak var tableView: UITableView!
     var Movies: [movie] = []
+    var refreshControl: UIRefreshControl?
     override func viewDidLoad() {
         super.viewDidLoad()
         ARSLineProgress.showOnView(view)
         loadData()
         tableView.dataSource = self
         tableView.delegate = self
+        refreshControl = UIRefreshControl()
+        refreshControl!.addTarget(self, action: #selector(refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl!, atIndex: 0)
+        
     }
-
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        self.Movies.removeAll()
+        loadData()
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -80,6 +91,7 @@ extension MovieViewController {
                             self.Movies.append(thisMovie)
                             ARSLineProgress.hide()
                             self.tableView.reloadData()
+                            self.refreshControl!.endRefreshing()
                         }
                     }
                 }
