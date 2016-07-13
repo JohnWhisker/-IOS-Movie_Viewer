@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import ARSLineProgress
 
 class MovieViewController: UIViewController {
     var endpoint: String?
@@ -16,7 +17,7 @@ class MovieViewController: UIViewController {
     var Movies: [movie] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        ARSLineProgress.show()
+        ARSLineProgress.showOnView(view)
         loadData()
         tableView.dataSource = self
         tableView.delegate = self
@@ -77,6 +78,7 @@ extension MovieViewController {
                             thisMovie.initData(result)
                           //thisMovie.printOut()
                             self.Movies.append(thisMovie)
+                            ARSLineProgress.hide()
                             self.tableView.reloadData()
                         }
                     }
