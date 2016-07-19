@@ -20,7 +20,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ARSLineProgress.showOnView(view)
         currentmovie.printOut()
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: viewLayout.frame.origin.y + viewLayout.frame.size.height + 55)
         viewLayout.layer.cornerRadius = 5
