@@ -19,6 +19,7 @@ class movie {
     var video: Int?
     var vote_average: NSNumber?
     var vote_count: NSNumber?
+    var isFavorite: Bool = false
     internal var lowResUrl: NSURL?
     internal var highResURL: NSURL?
     internal func initData(data: NSDictionary?){

@@ -8,15 +8,19 @@
 
 import UIKit
 import ARSLineProgress
+import Firebase
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    override init() {
+        FIRApp.configure()
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
+       
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // Now Playing Tab
         let nowPlayingNavigationController = storyboard.instantiateViewControllerWithIdentifier("MovieNavigationController") as! UINavigationController
@@ -36,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Search Bar
         let searchNavigationController = storyboard.instantiateViewControllerWithIdentifier("SearchNavigationController") as! UINavigationController
-        let searchViewController = searchNavigationController.topViewController as! SearchViewController
+        _ = searchNavigationController.topViewController as! SearchViewController
        // topRateViewController.endpoint = "top_rated"
        // searchViewController.title = "Search"
         //searchViewController.tabBarItem.title = "Search"
